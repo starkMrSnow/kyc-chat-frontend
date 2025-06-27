@@ -1,0 +1,303 @@
+.chat-container {
+  display: flex;
+  height: calc(100vh - 60px); 
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden; /* Ensures content stays within rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  font-family: 'Inter', sans-serif; 
+  padding: 2vw;
+}
+.send-icon {
+  stroke: #007bff; // or any theme color
+  transition: transform 0.2s;
+}
+button:active .send-icon {
+  transform: scale(1.1);
+}
+
+.user-list-sidebar {
+  width: 300px; 
+  min-width: 250px; /* Ensure it doesn't shrink too much */
+  border-right: 1px solid #eee;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-list-sidebar h3 {
+  padding: 15px;
+  margin: 0;
+  border-bottom: 1px solid #eee;
+  background-color: #4584e4; /* Light grey header background */
+  color: #eee8e8;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto; 
+  flex-grow: 1; /* Allows the list to take up available vertical space */
+}
+
+.user-list li {
+  padding: 15px;
+  border-bottom: 1px solid #cddaee;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s ease, border-left-color 0.2s ease;
+  outline: none; /* Remove default focus outline */
+}
+
+.user-list li:hover {
+  background-color: #f5f5f5;
+}
+
+.user-list li.active {
+  background-color: #e6f7ff; /* Highlight active user with light blue */
+  font-weight: bold;
+  border-left: 0px solid #1890ff; 
+}
+
+.user-list li .user-info {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.user-list li .user-name {
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Truncate long names */
+}
+
+.user-list li .unread-messages {
+  background-color: #3390e7;
+  color: white;
+  border-radius: 40px;
+  padding: 3px 8px;
+  font-size: 0.75em;
+  margin-left: 10px;
+  min-width: 24px; /* Ensure circle is visible even with single digit */
+  text-align: center;
+}
+
+.user-list .no-users {
+    padding: 15px;
+    color: #888;
+    text-align: center;
+    font-style: italic;
+}
+
+/* Chat area styling */
+.chat-area {
+  flex-grow: 1; /* Takes the remaining space */
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f2f5; 
+}
+
+.chat-area .chat-header {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+}
+
+.chat-area .chat-header h4 {
+  margin: 0;
+  color: #333;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.chat-area .message-list {
+  flex-grow: 1;
+  overflow-y: auto; /* Enable scrolling for messages */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between messages */
+  scrollbar-width: thin; 
+  scrollbar-color: #c4c4c4 transparent; 
+}
+
+
+.chat-area .message-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-area .message-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-area .message-list::-webkit-scrollbar-thumb {
+  background-color: #c4c4c4;
+  border-radius: 4px;
+  border: 2px solid transparent;
+}
+
+.message-bubble {
+  max-width: 70%; 
+  padding: 10px 15px;
+  border-radius: 18px;
+  position: relative;
+  word-wrap: break-word; 
+  box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13); 
+}
+
+.message-bubble p {
+  margin: 0;
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+
+.message-bubble .timestamp {
+  font-size: 0.7em;
+  color: #888;
+  margin-top: 5px;
+  display: block;
+  text-align: right;
+}
+
+.message-bubble.sent-by-user {
+  background-color: #ffffff; 
+  align-self: flex-start; 
+  border: 1px solid #e0e0e0; 
+}
+
+.message-bubble.sent-by-admin {
+  background-color: #83b8f3;
+  align-self: flex-end; 
+  color: white;
+}
+
+.chat-area .no-messages {
+    padding: 20px;
+    text-align: center;
+    color: #888;
+    font-style: italic;
+}
+
+.message-input-area {
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid #eee;
+  background-color: #fff;
+  align-items: center;
+}
+
+.message-input-area textarea {
+  flex-grow: 1;
+  border: 1px solid #7b93e2;
+  border-radius: 20px; /* Rounded input field */
+  padding: 10px 15px;
+  font-size: 0.95em;
+  resize: none; /* Prevent manual resizing by user */
+  min-height: 30px;
+  max-height: 30px; 
+  overflow-y: auto; 
+  margin-right: 10px;
+  max-width: 50vw;
+  margin-left: 15vw;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.message-input-area textarea:focus {
+  outline: none;
+  border-color: #1890ff; 
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2); 
+}
+
+.message-input-area button {
+  background-color: #1890ff; /* Blue send button */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 0.95em;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+}
+
+.message-input-area button:hover {
+  background-color: #40a9ff; 
+  transform: translateY(-1px); 
+}
+
+.message-input-area button:disabled {
+  background-color: #91d5ff;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+
+.no-chat-selected {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #5c76e7;
+  font-size: 1.1em;
+  text-align: center;
+  padding: 20px;
+}
+
+
+@media (max-width: 768px) {
+  .chat-container {
+    flex-direction: column;
+  }
+
+  .user-list-sidebar {
+    width: 100%; 
+    border-right: none;
+    border-bottom: 1px solid #eee; 
+  }
+
+  .user-list-sidebar h3 {
+    text-align: center;
+  }
+
+  .chat-area {
+    width: 100%; 
+    min-height: 400px; 
+  }
+
+  .message-bubble {
+    max-width: 85%; 
+  }
+}
+
+@media (max-width: 480px) {
+  .user-list li {
+    padding: 12px; 
+  }
+
+  .message-bubble {
+    padding: 8px 12px; 
+    font-size: 0.9em;
+  }
+
+  .message-input-area {
+    padding: 10px; 
+  }
+
+  .message-input-area textarea {
+    padding: 8px 12px; 
+    min-height: 35px;
+  }
+
+  .message-input-area button {
+    padding: 8px 15px; 
+    font-size: 0.9em;
+  }
+}

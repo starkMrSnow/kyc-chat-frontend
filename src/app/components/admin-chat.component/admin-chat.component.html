@@ -1,0 +1,67 @@
+<div class="chat-container">
+  <!-- Left Sidebar: List of Users -->
+  <div class="user-list-sidebar">
+    <h3>Chats</h3>
+    <ul class="user-list">
+      <!-- Loop through your active users here -->
+      <li *ngFor="let user of users"
+          [class.active]="user.id === selectedUser?.id"
+          (click)="selectUser(user)"
+          tabindex="0"
+          role="button"
+          [attr.aria-label]="'Select chat with ' + user.name">
+        <div class="user-info">
+          <span class="user-name">{{ user.name }}</span>
+          <!-- Display unread message count if greater than 0 -->
+          <span class="unread-messages" *ngIf="user.unreadCount > 0">{{ user.unreadCount }}</span>
+        </div>
+      </li>
+      <!-- Message shown when no users are available -->
+      <li *ngIf="users.length === 0" class="no-users">No active chats.</li>
+    </ul>
+  </div>
+
+  <!-- Right Area: Chat Conversation -->
+  <div class="chat-area">
+    <!-- Chat Header: Displays the name of the selected user -->
+    <div *ngIf="selectedUser" class="chat-header">
+      <h4>{{ selectedUser.name }}</h4>
+    </div>
+
+    <!-- Message List: Displays messages for the selected user -->
+    <div *ngIf="selectedUser" class="message-list">
+      <!-- Loop through messages for the selected user -->
+      <div *ngFor="let message of messages; trackBy: trackByMessageId"
+           [class.sent-by-admin]="message.sender === 'admin'"
+           [class.sent-by-user]="message.sender === 'user'"
+           class="message-bubble" #messageBubble>
+        <p>{{ message.text }}</p>
+        <!-- Use Angular DatePipe for formatted timestamp -->
+        <span class="timestamp">{{ message.timestamp | date:'shortTime' }}</span>
+      </div>
+      <!-- Message shown when no messages are available for the selected user -->
+      <div *ngIf="messages.length === 0" class="no-messages">No messages yet. Start a conversation!</div>
+    </div>
+
+    <!-- Message Input Area: For typing and sending messages -->
+   <div class="message-input-area">
+  <textarea [(ngModel)]="newMessageText"
+            placeholder="Type your message..."
+            (keydown.enter)="sendMessage($event)"
+            aria-label="Type your message"></textarea>
+ 
+            
+  <button (click)="sendMessage()" [disabled]="!newMessageText.trim()" aria-label="Send message">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-icon">
+      <path d="M22 2L11 13"></path>
+      <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+    </svg>
+  </button>
+</div>
+
+    <!-- Message shown when no user is selected -->
+    <div *ngIf="!selectedUser" class="no-chat-selected">
+      <p>Select a user to start chat.</p>
+    </div>
+  </div>
+</div>
