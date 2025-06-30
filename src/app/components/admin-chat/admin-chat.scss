@@ -3,56 +3,45 @@
   height: calc(100vh - 60px); 
   border: 1px solid #ddd;
   border-radius: 8px;
-  overflow: hidden; /* Ensures content stays within rounded corners */
+  overflow: hidden; 
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
   font-family: 'Inter', sans-serif; 
-  padding: 2vw;
 }
-.send-icon {
-  stroke: #007bff; // or any theme color
-  transition: transform 0.2s;
-}
-button:active .send-icon {
-  transform: scale(1.1);
-}
-
 .user-list-sidebar {
-  width: 300px; 
-  min-width: 250px; /* Ensure it doesn't shrink too much */
+  width: 300px;
+  min-width: 250px;
   border-right: 1px solid #eee;
   background-color: #fff;
   display: flex;
   flex-direction: column;
 }
-
 .user-list-sidebar h3 {
   padding: 15px;
   margin: 0;
   border-bottom: 1px solid #eee;
-  background-color: #4584e4; /* Light grey header background */
-  color: #eee8e8;
+  background-color: #f0f2f5;
+  color: #333;
   font-size: 1.1em;
   font-weight: 600;
 }
-
 .user-list {
   list-style: none;
   padding: 0;
   margin: 0;
   overflow-y: auto; 
-  flex-grow: 1; /* Allows the list to take up available vertical space */
+  flex-grow: 1; 
 }
 
 .user-list li {
   padding: 15px;
-  border-bottom: 1px solid #cddaee;
+  border-bottom: 1px solid #eee;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: background-color 0.2s ease, border-left-color 0.2s ease;
-  outline: none; /* Remove default focus outline */
+  outline: none; 
 }
 
 .user-list li:hover {
@@ -60,9 +49,9 @@ button:active .send-icon {
 }
 
 .user-list li.active {
-  background-color: #e6f7ff; /* Highlight active user with light blue */
+  background-color: #e6f7ff; 
   font-weight: bold;
-  border-left: 0px solid #1890ff; 
+  border-left: 4px solid #1890ff; 
 }
 
 .user-list li .user-info {
@@ -75,17 +64,17 @@ button:active .send-icon {
   flex-grow: 1;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* Truncate long names */
+  text-overflow: ellipsis;
 }
 
 .user-list li .unread-messages {
-  background-color: #3390e7;
+  background-color: #405bf1;
   color: white;
-  border-radius: 40px;
+  border-radius: 80px;
   padding: 3px 8px;
   font-size: 0.75em;
   margin-left: 10px;
-  min-width: 24px; /* Ensure circle is visible even with single digit */
+  min-width: 15px; 
   text-align: center;
 }
 
@@ -96,9 +85,9 @@ button:active .send-icon {
     font-style: italic;
 }
 
-/* Chat area styling */
+
 .chat-area {
-  flex-grow: 1; /* Takes the remaining space */
+  flex-grow: 1; 
   display: flex;
   flex-direction: column;
   background-color: #f0f2f5; 
@@ -119,15 +108,14 @@ button:active .send-icon {
 
 .chat-area .message-list {
   flex-grow: 1;
-  overflow-y: auto; /* Enable scrolling for messages */
+  overflow-y: auto; 
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Space between messages */
+  gap: 10px; 
   scrollbar-width: thin; 
   scrollbar-color: #c4c4c4 transparent; 
 }
-
 
 .chat-area .message-list::-webkit-scrollbar {
   width: 8px;
@@ -142,16 +130,14 @@ button:active .send-icon {
   border-radius: 4px;
   border: 2px solid transparent;
 }
-
 .message-bubble {
   max-width: 70%; 
   padding: 10px 15px;
-  border-radius: 18px;
+  border-radius: 18px; 
   position: relative;
-  word-wrap: break-word; 
+  word-wrap: break-word;
   box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13); 
 }
-
 .message-bubble p {
   margin: 0;
   font-size: 0.95em;
@@ -160,22 +146,21 @@ button:active .send-icon {
 
 .message-bubble .timestamp {
   font-size: 0.7em;
-  color: #888;
+  color: #961e1e;
   margin-top: 5px;
   display: block;
-  text-align: right;
+  text-align: right; 
 }
+.message-bubble.sent-by-admin {
+  background-color: #45a9fa; 
+  align-self: flex-end;
+  color: #ffffff;
 
+}
 .message-bubble.sent-by-user {
   background-color: #ffffff; 
   align-self: flex-start; 
   border: 1px solid #e0e0e0; 
-}
-
-.message-bubble.sent-by-admin {
-  background-color: #83b8f3;
-  align-self: flex-end; 
-  color: white;
 }
 
 .chat-area .no-messages {
@@ -195,17 +180,15 @@ button:active .send-icon {
 
 .message-input-area textarea {
   flex-grow: 1;
-  border: 1px solid #7b93e2;
-  border-radius: 20px; /* Rounded input field */
+  border: 1px solid #ddd;
+  border-radius: 20px; 
   padding: 10px 15px;
   font-size: 0.95em;
-  resize: none; /* Prevent manual resizing by user */
-  min-height: 30px;
-  max-height: 30px; 
+  resize: none; 
+  min-height: 40px; 
+  max-height: 100px; 
   overflow-y: auto; 
   margin-right: 10px;
-  max-width: 50vw;
-  margin-left: 15vw;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -216,36 +199,43 @@ button:active .send-icon {
 }
 
 .message-input-area button {
-  background-color: #1890ff; /* Blue send button */
-  color: white;
+  background-color: #1890ff; 
+  color: white; 
   border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
+  border-radius: 50%; 
+  width: 44px; 
+  height: 44px;
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
   cursor: pointer;
-  font-size: 0.95em;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+  padding: 0; 
 }
 
 .message-input-area button:hover {
-  background-color: #40a9ff; 
-  transform: translateY(-1px); 
+  background-color: #40a9ff;
+  transform: translateY(-1px);
 }
 
 .message-input-area button:disabled {
-  background-color: #91d5ff;
+  background-color: #91d5ff; 
   cursor: not-allowed;
   box-shadow: none;
   transform: none;
 }
-
-
+.message-input-area .send-icon {
+    width: 24px;
+    height: 24px; 
+    transform: translateX(1px) rotate(45deg); 
+}
 .no-chat-selected {
   flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #5c76e7;
+  color: #888;
   font-size: 1.1em;
   text-align: center;
   padding: 20px;
@@ -254,13 +244,14 @@ button:active .send-icon {
 
 @media (max-width: 768px) {
   .chat-container {
-    flex-direction: column;
+    flex-direction: column; 
+    height: auto; 
   }
 
   .user-list-sidebar {
-    width: 100%; 
+    width: 100%;
     border-right: none;
-    border-bottom: 1px solid #eee; 
+    border-bottom: 1px solid #eee;
   }
 
   .user-list-sidebar h3 {
@@ -271,9 +262,8 @@ button:active .send-icon {
     width: 100%; 
     min-height: 400px; 
   }
-
   .message-bubble {
-    max-width: 85%; 
+    max-width: 85%;
   }
 }
 
@@ -284,20 +274,25 @@ button:active .send-icon {
 
   .message-bubble {
     padding: 8px 12px; 
-    font-size: 0.9em;
+    font-size: 0.9em; 
   }
 
   .message-input-area {
-    padding: 10px; 
-  }
+    padding: 10px; }
 
   .message-input-area textarea {
-    padding: 8px 12px; 
+    padding: 8px 12px;
     min-height: 35px;
   }
 
+ 
   .message-input-area button {
-    padding: 8px 15px; 
-    font-size: 0.9em;
+    width: 38px;
+    height: 38px;
+  }
+
+  .message-input-area .send-icon {
+    width: 20px;
+    height: 20px;
   }
 }
