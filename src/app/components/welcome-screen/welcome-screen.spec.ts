@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminChatComponent } from './admin-chat.component';
+import { WelcomeScreen } from './welcome-screen';
 
-describe('AdminChatComponent', () => {
-  let component: AdminChatComponent;
-  let fixture: ComponentFixture<AdminChatComponent>;
+describe('WelcomeScreen', () => {
+  let component: WelcomeScreen;
+  let fixture: ComponentFixture<WelcomeScreen>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AdminChatComponent]
+      imports: [WelcomeScreen]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AdminChatComponent);
+    fixture = TestBed.createComponent(WelcomeScreen);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

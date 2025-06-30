@@ -28,6 +28,10 @@
             ],
             "styles": [
               "src/styles.scss"
+            ],
+            "polyfills": [ 
+              "zone.js",
+              "src/polyfills.ts" 
             ]
           },
           "configurations": {

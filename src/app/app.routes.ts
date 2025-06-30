@@ -1,10 +1,10 @@
-// src/app/app.routes.ts
 import { Routes } from '@angular/router';
-import { AdminChatComponent } from './components/admin-chat.component/admin-chat.component';
-import { CustomerChatComponent } from './components/customer-chat.component/customer-chat.component';
-
+import { AdminChat } from './components/admin-chat/admin-chat';
+import { CustomerChat } from './components/customer-chat/customer-chat';
+import { WelcomeScreen } from './components/welcome-screen/welcome-screen'; 
 export const routes: Routes = [
-  { path: 'admin-chat', component: AdminChatComponent },
-  { path: 'customer-chat', component: CustomerChatComponent },
-  { path: '', redirectTo: 'admin-chat', pathMatch: 'full' }, // optional default route
+  { path: 'welcome', component: WelcomeScreen },
+  { path: 'customer-chat', component: CustomerChat },
+  { path: 'admin-chat', component: AdminChat },
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' }, 
 ];
